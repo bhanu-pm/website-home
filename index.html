@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthwave Space Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Audiowide&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    :root {
+      --neon-pink: #ff00ff;
+      --neon-blue: #00ffff;
+      --neon-purple: #9d00ff;
+      --neon-green: #39ff14;
+      --neon-yellow: #ffff00;
+      --neon-orange: #ff9900;
+      --dark-bg: #170a29;
+      --darker-bg: #0f0a1e;
+      --main-bg: #2d0a6d;
+      --text-color: #e0e0ff;
+      --section-spacing: 6rem; /* Consistent spacing between sections */
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #1a0b3b, #2d0a6d, #3d0f7a);
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Hide scrollbar */
+    ::-webkit-scrollbar {
+      width: 0px;
+    }
+
+    body {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Neon text effects */
+    .neon-text {
+      text-shadow: 0 0 10px rgba(255, 0, 255, 0.9), 0 0 20px rgba(255, 0, 255, 0.7), 0 0 30px rgba(255, 0, 255, 0.5);
+    }
+
+    .neon-blue-text {
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.9), 0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.5);
+    }
+
+    .neon-purple-text {
+      text-shadow: 0 0 10px rgba(157, 0, 255, 0.9), 0 0 20px rgba(157, 0, 255, 0.7), 0 0 30px rgba(157, 0, 255, 0.5);
+    }
+
+    .neon-green-text {
+      text-shadow: 0 0 10px rgba(57, 255, 20, 0.9), 0 0 20px rgba(57, 255, 20, 0.7), 0 0 30px rgba(57, 255, 20, 0.5);
+    }
+
+    .neon-yellow-text {
+      text-shadow: 0 0 10px rgba(255, 255, 0, 0.9), 0 0 20px rgba(255, 255, 0, 0.7), 0 0 30px rgba(255, 255, 0, 0.5);
+    }
+
+    .neon-orange-text {
+      text-shadow: 0 0 10px rgba(255, 153, 0, 0.9), 0 0 20px rgba(255, 153, 0, 0.7), 0 0 30px rgba(255, 153, 0, 0.5);
+    }
+
+    /* Neon border effects */
+    .neon-border {
+      box-shadow: 0 0 10px rgba(255, 0, 255, 0.9), 0 0 20px rgba(255, 0, 255, 0.7);
+    }
+
+    .neon-blue-border {
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.9), 0 0 20px rgba(0, 255, 255, 0.7);
+    }
+
+    .neon-purple-border {
+      box-shadow: 0 0 10px rgba(157, 0, 255, 0.9), 0 0 20px rgba(157, 0, 255, 0.7);
+    }
+
+    .neon-green-border {
+      box-shadow: 0 0 10px rgba(57, 255, 20, 0.9), 0 0 20px rgba(57, 255, 20, 0.7);
+    }
+
+    .neon-yellow-border {
+      box-shadow: 0 0 10px rgba(255, 255, 0, 0.9), 0 0 20px rgba(255, 255, 0, 0.7);
+    }
+
+    .neon-orange-border {
+      box-shadow: 0 0 10px rgba(255, 153, 0, 0.9), 0 0 20px rgba(255, 153, 0, 0.7);
+    }
+
+    /* Background effects */
+    .bg-container {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+
+    .bg-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom right, #4a0bff, #2d0a6d, #ff00ff);
+      opacity: 0.3;
+      animation: gradient-shift 15s ease infinite;
+    }
+
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to bottom, rgba(255, 0, 255, 0.2) 1px, transparent 1px), 
+        linear-gradient(to right, rgba(0, 255, 255, 0.2) 1px, transparent 1px);
+      background-size: 40px 40px;
+      background-position: center;
+      pointer-events: none;
+    }
+
+    .bg-horizon {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40vh;
+      background: linear-gradient(to top, #ff00aa, rgba(255, 0, 102, 0.5), transparent);
+      opacity: 0.4;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      right: 2rem;
+      top: 10%;
+      bottom: 10%;
+      width: 0.5rem;
+      background-color: rgba(23, 10, 41, 0.7);
+      z-index: 50;
+      border-radius: 9999px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 0, 255, 0.5);
+    }
+
+    .scroll-indicator-fill {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      border-radius: 9999px;
+      background: linear-gradient(to top, #ff00ff, #00ffff);
+      box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* Scroll buttons */
+    .scroll-to-intro-btn {
+      position: fixed;
+      top: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      background-color: rgba(23, 10, 41, 0.8);
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(0, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.4);
+      transition: all 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .scroll-to-intro-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-to-intro-btn:hover {
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.9), 0 0 40px rgba(0, 255, 255, 0.6);
+    }
+
+    .scroll-to-intro-btn:active {
+      transform: translateX(-50%) scale(0.95);
+    }
+
+    .scroll-to-intro-btn span {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #00ffff;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.9), 0 0 20px rgba(0, 255, 255, 0.7);
+    }
+
+    .scroll-up-indicator {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .scroll-up-indicator.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .chevron-up {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: #ff00ff;
+      filter: drop-shadow(0 0 8px #ff00ff);
+      animation: float 1.5s ease-in-out infinite;
+    }
+
+    .scroll-up-text {
+      color: #ff00ff;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-family: 'Audiowide', sans-serif;
+      text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+    }
+
+    /* Content container */
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    /* Section styling - updated for auto-height and consistent spacing */
+    .section {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem; /* Reduced padding to prevent excessive spacing */
+      position: relative;
+      margin-bottom: var(--section-spacing); /* Consistent spacing between sections */
+      min-height: auto; /* Allow sections to size based on content */
+    }
+
+    /* Last section doesn't need bottom margin */
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-content {
+      width: 100%;
+      max-width: 64rem;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section.in-view .section-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card {
+      background-color: rgba(23, 10, 41, 0.7);
+      backdrop-filter: blur(4px);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255, 0, 255, 0.3);
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .card.blue {
+      border-color: rgba(0, 255, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3);
+    }
+
+    .card.purple {
+      border-color: rgba(157, 0, 255, 0.3);
+      box-shadow: 0 0 20px rgba(157, 0, 255, 0.5), 0 0 40px rgba(157, 0, 255, 0.3);
+    }
+
+    .card.green {
+      border-color: rgba(57, 255, 20, 0.3);
+      box-shadow: 0 0 20px rgba(57, 255, 20, 0.5), 0 0 40px rgba(57, 255, 20, 0.3);
+    }
+
+    .card.yellow {
+      border-color: rgba(255, 255, 0, 0.3);
+      box-shadow: 0 0 20px rgba(255, 255, 0, 0.5), 0 0 40px rgba(255, 255, 0, 0.3);
+    }
+
+    .card.orange {
+      border-color: rgba(255, 153, 0, 0.3);
+      box-shadow: 0 0 20px rgba(255, 153, 0, 0.5), 0 0 40px rgba(255, 153, 0, 0.3);
+    }
+
+    /* Section headings */
+    .section-heading {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    @media (min-width: 768px) {
+      .section-heading {
+        font-size: 3.75rem;
+      }
+    }
+
+    .pink-gradient {
+      background: linear-gradient(to right, #ff00ff, #ff66ff, #cc00ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+    }
+
+    .blue-gradient {
+      background: linear-gradient(to right, #00ffff, #66ffff, #00ccff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+    }
+
+    .purple-gradient {
+      background: linear-gradient(to right, #9d00ff, #c066ff, #8800cc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 15px rgba(157, 0, 255, 0.7);
+    }
+
+    .green-gradient {
+      background: linear-gradient(to right, #39FF14, #80ff66, #00cc00);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 15px rgba(57, 255, 20, 0.7);
+    }
+
+    .yellow-gradient {
+      background: linear-gradient(to right, #ffff00, #ffdd00, #ffaa00);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 15px rgba(255, 255, 0, 0.7);
+    }
+
+    .orange-gradient {
+      background: linear-gradient(to right, #ff9900, #ffcc00, #ff6600);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 15px rgba(255, 153, 0, 0.7);
+    }
+
+    /* Experience section */
+    .timeline {
+      margin-top: 3rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      border-left: 2px solid rgba(0, 255, 255, 0.4);
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0; /* Remove margin from last item */
+    }
+
+    .section.in-view .timeline-item {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .section.in-view .timeline-item:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    .section.in-view .timeline-item:nth-child(3) {
+      transition-delay: 0.2s;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -9px;
+      top: 0;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: #00ffff;
+      box-shadow: 0 0 10px #00ffff, 0 0 15px #00ffff;
+      animation: neon-pulse 2s ease-in-out infinite;
+    }
+
+    .timeline-role {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #00ffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-company-period {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-company {
+      color: #66ffff;
+    }
+
+    .timeline-period {
+      color: rgba(224, 224, 255, 0.7);
+    }
+
+    .timeline-description {
+      color: var(--text-color);
+    }
+
+    /* Competitions section */
+    .competition-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .competition-item {
+      background-color: rgba(15, 10, 30, 0.8);
+      backdrop-filter: blur(4px);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(157, 0, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .section.in-view .competition-item {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section.in-view .competition-item:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    .section.in-view .competition-item:nth-child(3) {
+      transition-delay: 0.2s;
+    }
+
+    .competition-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(157, 0, 255, 0.3), 0 0 30px rgba(157, 0, 255, 0.2);
+    }
+
+    .competition-content {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .trophy-icon {
+      background: linear-gradient(to bottom right, #9d00ff, #6600cc);
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 10px rgba(157, 0, 255, 0.5), 0 0 20px rgba(157, 0, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .competition-details {
+      flex: 1;
+    }
+
+    .competition-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.25rem;
+    }
+
+    .competition-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #9d00ff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .competition-year {
+      color: rgba(224, 224, 255, 0.7);
+    }
+
+    .competition-position {
+      color: #c066ff;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .competition-description {
+      color: var(--text-color);
+    }
+
+    /* Projects section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .project-card {
+      background-color: rgba(15, 10, 30, 0.8);
+      backdrop-filter: blur(4px);
+      border-radius: 0.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 153, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .section.in-view .project-card {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section.in-view .project-card:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    .section.in-view .project-card:nth-child(3) {
+      transition-delay: 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(255, 153, 0, 0.5), 0 0 40px rgba(255, 153, 0, 0.3);
+      border-color: rgba(255, 153, 0, 0.7);
+    }
+
+    .project-image-container {
+      position: relative;
+      height: 12rem;
+    }
+
+    .project-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, #0f0a1e, transparent, transparent);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #ff9900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 10px rgba(255, 153, 0, 0.7);
+    }
+
+    .project-description {
+      color: var(--text-color);
+    }
+
+    .view-all-btn {
+      display: block;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      background: linear-gradient(to right, #ff9900, #ff6600);
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 1px solid rgba(255, 153, 0, 0.5);
+      box-shadow: 0 0 15px rgba(255, 153, 0, 0.7), 0 0 30px rgba(255, 153, 0, 0.5);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .view-all-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 153, 0, 0.8), 0 0 40px rgba(255, 153, 0, 0.6);
+      background: linear-gradient(to right, #ffaa00, #ff7700);
+    }
+
+    /* About section */
+    .about-content {
+      color: var(--text-color);
+      font-size: 1.125rem;
+      line-height: 1.6;
+    }
+
+    .about-list {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .about-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Contact section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .contact-heading {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #39FF14;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-text {
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-icon {
+      color: #39FF14;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(57, 255, 20, 0.5);
+      color: #39FF14;
+      background-color: transparent;
+      box-shadow: 0 0 5px rgba(57, 255, 20, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background-color: rgba(57, 255, 20, 0.1);
+      border-color: #39FF14;
+      transform: translateY(-2px);
+    }
+
+    .contact-card {
+      background-color: rgba(15, 10, 30, 0.8);
+      backdrop-filter: blur(4px);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(57, 255, 20, 0.2);
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background-color: #39FF14;
+    }
+
+    .availability {
+      margin-top: 1.5rem;
+    }
+
+    .availability-badge {
+      display: block;
+      padding: 0.75rem;
+      background-color: rgba(57, 255, 20, 0.1);
+      border: 1px solid rgba(57, 255, 20, 0.3);
+      border-radius: 0.375rem;
+      text-align: center;
+      color: #39FF14;
+      font-weight: 600;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .availability-badge:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+    }
+
+    /* Introduction section */
+    .intro-icon {
+      width: 8rem;
+      height: 8rem;
+      margin: 2rem auto;
+      border-radius: 9999px;
+      background: linear-gradient(to bottom right, #ffff00, #ffaa00);
+      padding: 0.25rem;
+      box-shadow: 0 0 20px rgba(255, 255, 0, 0.7);
+      animation: glow 2s infinite alternate;
+    }
+
+    .intro-icon-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 9999px;
+      background-color: var(--dark-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+
+    .intro-quote {
+      text-align: center;
+      font-style: italic;
+      margin: 2rem 0;
+    }
+
+    /* Animations */
+    @keyframes gradient-shift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes neon-pulse {
+      0%, 100% {
+        opacity: 1;
+        filter: brightness(1.2);
+      }
+      50% {
+        opacity: 0.8;
+        filter: brightness(1.5);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.8;
+      }
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 20px rgba(255, 255, 0, 0.7);
+      }
+      to {
+        box-shadow: 0 0 40px rgba(255, 255, 0, 0.7);
+      }
+    }
+
+    /* Icons */
+    .icon {
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      stroke-width: 0;
+      stroke: currentColor;
+      fill: currentColor;
+    }
+
+    .chevron-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background effects -->
+  <div class="bg-container">
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-horizon"></div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-indicator-fill" id="scrollFill"></div>
+  </div>
+
+  <!-- Scroll to intro button -->
+  <button class="scroll-to-intro-btn" id="scrollToIntroBtn">
+    <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#00ffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+    <span>BACK TO INTRODUCTION</span>
+  </button>
+
+  <!-- Scroll up indicator -->
+  <div class="scroll-up-indicator" id="scrollUpIndicator">
+    <svg class="chevron-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+    <span class="scroll-up-text">Scroll Up</span>
+  </div>
+
+  <!-- Content sections -->
+  <div class="content-container">
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="section-content">
+        <div class="card green">
+          <h2 class="section-heading green-gradient">Contact</h2>
+          <div class="contact-grid">
+            <div>
+              <h3 class="contact-heading">Get In Touch</h3>
+              <p class="contact-text">
+                Ready to embark on a cosmic journey together? Reach out through any of these channels and I'll respond faster than light!
+              </p>
+
+              <div class="contact-item">
+                <svg class="icon contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>contact@synthportfolio.com</span>
+              </div>
+
+              <div class="social-links">
+                <a href="#" class="social-link">
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                </a>
+                <a href="#" class="social-link">
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </a>
+                <a href="#" class="social-link">
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <h3 class="contact-heading">Contact Details</h3>
+              <p class="contact-text">Feel free to contact me through these alternate channels:</p>
+              <div class="contact-detail">
+                <div class="contact-dot"></div>
+                <span>Phone: +1 (234) 567-8901</span>
+              </div>
+              <div class="contact-detail">
+                <div class="contact-dot"></div>
+                <span>Office: Cosmic Tower, Suite 42</span>
+              </div>
+              <div class="contact-detail">
+                <div class="contact-dot"></div>
+                <span>Hours: 9am - 5pm Earth Time</span>
+              </div>
+
+              <div class="availability">
+                <h3 class="contact-heading">Availability</h3>
+                <p class="contact-text">Currently available for freelance work and interesting collaborations across the galaxy.</p>
+                <div class="availability-badge">Open to new opportunities</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Competitions Section -->
+    <section id="competitions" class="section">
+      <div class="section-content">
+        <div class="card purple">
+          <h2 class="section-heading purple-gradient">Competitions</h2>
+          <div class="competition-list">
+            <div class="competition-item">
+              <div class="competition-content">
+                <div class="trophy-icon">
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                    <path d="M4 22h16"></path>
+                    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                  </svg>
+                </div>
+                <div class="competition-details">
+                  <div class="competition-header">
+                    <h3 class="competition-name">International Space Hackathon</h3>
+                    <span class="competition-year">2023</span>
+                  </div>
+                  <div class="competition-position neon-purple-text">1st Place</div>
+                  <p class="competition-description">Developed an AI-powered asteroid mining simulation that optimizes resource extraction.</p>
+                </div>
+              </div>
+            </div>
+            <div class="competition-item">
+              <div class="competition-content">
+                <div class="trophy-icon">
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                    <path d="M4 22h16"></path>
+                    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                  </svg>
+                </div>
+                <div class="competition-details">
+                  <div class="competition-header">
+                    <h3 class="competition-name">Global Mars Colonization Challenge</h3>
+                    <span class="competition-year">2022</span>
+                  </div>
+                  <div class="competition-position neon-purple-text">Finalist</div>
+                  <p class="competition-description">Designed a sustainable habitat system for long-term human presence on Mars.</p>
+                </div>
+              </div>
+            </div>
+            <div class="competition-item">
+              <div class="competition-content">
+                <div class="trophy-icon">
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                    <path d="M4 22h16"></path>
+                    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                  </svg>
+                </div>
+                <div class="competition-details">
+                  <div class="competition-header">
+                    <h3 class="competition-name">Space Visualization Competition</h3>
+                    <span class="competition-year">2021</span>
+                  </div>
+                  <div class="competition-position neon-purple-text">2nd Place</div>
+                  <p class="competition-description">Created an interactive 3D model of the solar system with educational components.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+      <div class="section-content">
+        <div class="card blue">
+          <h2 class="section-heading blue-gradient">Experience</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <h3 class="timeline-role neon-blue-text">Senior Space Engineer</h3>
+              <div class="timeline-company-period">
+                <span class="timeline-company">Galactic Innovations</span>
+                <span class="timeline-period">2021 - Present</span>
+              </div>
+              <p class="timeline-description">Leading a team of engineers to develop cutting-edge space technology solutions.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <h3 class="timeline-role neon-blue-text">Orbital Developer</h3>
+              <div class="timeline-company-period">
+                <span class="timeline-company">Lunar Technologies</span>
+                <span class="timeline-period">2018 - 2021</span>
+              </div>
+              <p class="timeline-description">Designed and implemented satellite communication systems and data visualization tools.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <h3 class="timeline-role neon-blue-text">Stellar Designer</h3>
+              <div class="timeline-company-period">
+                <span class="timeline-company">Cosmic Creations</span>
+                <span class="timeline-period">2015 - 2018</span>
+              </div>
+              <p class="timeline-description">Created immersive user experiences for space exploration applications and educational platforms.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <div class="section-content">
+        <div class="card orange">
+          <h2 class="section-heading orange-gradient">Projects</h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-image-container">
+                <img src="https://via.placeholder.com/500x300" alt="Cosmic Explorer" class="project-image">
+                <div class="project-image-overlay"></div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Cosmic Explorer</h3>
+                <p class="project-description">An interactive visualization of our solar system with real-time data.</p>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-image-container">
+                <img src="https://via.placeholder.com/500x300" alt="Satellite Tracker" class="project-image">
+                <div class="project-image-overlay"></div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Satellite Tracker</h3>
+                <p class="project-description">A web application that tracks and displays satellite positions in real-time.</p>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-image-container">
+                <img src="https://via.placeholder.com/500x300" alt="Mars Rover" class="project-image">
+                <div class="project-image-overlay"></div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Mars Rover</h3>
+                <p class="project-description">A virtual reality experience of Mars exploration based on NASA data.</p>
+              </div>
+            </div>
+          </div>
+          <button class="view-all-btn">View All Projects</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="section-content">
+        <div class="card">
+          <h2 class="section-heading pink-gradient">About Me</h2>
+          <div class="about-content">
+            <p>Greetings, Earth dweller! I'm a cosmic explorer in the digital universe, navigating through the vast expanse of code and design.</p>
+            <p>With a passion for creating stellar experiences and launching innovative solutions, I've been orbiting the tech industry for several light-years.</p>
+            <ul class="about-list">
+              <li>Game Design (Circa 2010)</li>
+              <li>Astronomy</li>
+              <li>Physics</li>
+              <li>Quantum Physics</li>
+              <li>Android Rooting (2014)</li>
+              <li>Scripting</li>
+              <li>Astrophysics</li>
+              <li>Youtube Content Creation</li>
+              <li>Video Editing</li>
+              <li>Machine Learning (2018)</li>
+              <li>Computer Science</li>
+              <li>Computer Vision (2020)</li>
+              <li>LLMs</li>
+              <li>Website Development</li>
+              <li>Internet of Things</li>
+              <li>GPU Architecture</li>
+              <li>Coding for Quantum Computers</li>
+              <li>Perceptual reasoning for Computers</li>
+            </ul>
+            <p>My mission is to push the boundaries of what's possible and venture into uncharted territories of creativity and technology.</p>
+            <p>When I'm not traversing the digital cosmos, you can find me stargazing with my telescope, collecting vintage synthesizers, or designing my own tabletop space exploration games. My philosophy is that technology should feel like magic, and I strive to bring that sense of wonder to every project I undertake.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="introduction" class="section">
+      <div class="section-content">
+        <div class="card yellow">
+          <h2 class="section-heading yellow-gradient">Introduction</h2>
+          <div class="about-content">
+            <p>Welcome to my cosmic portfolio! I'm a digital explorer navigating the vast universe of technology and creativity.</p>
+            <p>This journey through my professional galaxy will showcase the constellations of projects I've built, the orbital paths of my career, and the nebulae of ideas I've brought to life.</p>
+            
+            <div class="intro-icon">
+              <div class="intro-icon-inner">✨</div>
+            </div>
+            
+            <p class="intro-quote">"The universe is full of magical things patiently waiting for our wits to grow sharper."</p>
+            
+            <p>Scroll up to begin our interstellar journey through my professional universe, or continue exploring this section to learn more about my approach and philosophy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // References to elements
+      const scrollFill = document.getElementById('scrollFill');
+      const scrollToIntroBtn = document.getElementById('scrollToIntroBtn');
+      const scrollUpIndicator = document.getElementById('scrollUpIndicator');
+      const introSection = document.getElementById('introduction');
+      const sections = document.querySelectorAll('.section');
+      
+      // Scroll to introduction section on initial load
+      setTimeout(() => {
+        introSection.scrollIntoView({ behavior: 'auto' });
+        checkScrollPosition();
+      }, 100);
+      
+      // Update scroll indicator and check position
+      function updateScrollIndicator() {
+        const scrollPosition = window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercentage = (scrollPosition / documentHeight) * 100;
+        
+        // Invert the percentage for bottom-to-top fill
+        const invertedPercentage = 100 - scrollPercentage;
+        scrollFill.style.height = `${invertedPercentage}%`;
+      }
+      
+      function checkScrollPosition() {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        
+        // Check if at bottom (introduction section)
+        const isAtBottom = scrollPosition >= documentHeight - windowHeight - 100;
+        scrollUpIndicator.classList.toggle('visible', isAtBottom);
+        
+        // Check if at top sections
+        const isAtTop = scrollPosition <= windowHeight * 0.5;
+        scrollToIntroBtn.classList.toggle('visible', isAtTop && !isAtBottom);
+        
+        // Check which section is in view for animations
+        sections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          const inView = rect.top < windowHeight * 0.75 && rect.bottom > windowHeight * 0.25;
+          section.classList.toggle('in-view', inView);
+        });
+      }
+      
+      // Scroll to introduction when button is clicked
+      scrollToIntroBtn.addEventListener('click', function() {
+        introSection.scrollIntoView({ behavior: 'smooth' });
+      });
+      
+      // Event listeners
+      window.addEventListener('scroll', function() {
+        updateScrollIndicator();
+        checkScrollPosition();
+      });
+      
+      // Initial update
+      updateScrollIndicator();
+      checkScrollPosition();
+    });
+  </script>
+</body>
+</html>
