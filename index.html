@@ -203,6 +203,7 @@
       font-size: 0.875rem;
       font-weight: 500;
       color: #ff00ff;
+      font-family: 'Audiowide', sans-serif;
       text-shadow: 0 0 10px rgba(255, 0, 255, 0.9), 0 0 20px rgba(255, 0, 255, 0.7);
     }
 
@@ -213,11 +214,17 @@
       transform: translateX(-50%);
       z-index: 50;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.5s ease, transform 0.5s ease;
+      background-color: rgba(23, 10, 41, 0.8);
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(0, 255, 255, 0.7);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.4);
     }
 
     .scroll-up-indicator.visible {
@@ -225,22 +232,30 @@
       pointer-events: auto;
     }
 
+    .scroll-up-indicator:hover {
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 0 20px rgba(74, 11, 255, 0.9), 0 0 40px rgba(74, 11, 255, 0.6);
+    }
+
+    .scroll-up-indicator:active {
+      transform: translateX(-50%) scale(0.95);
+    }
+
     .chevron-up {
       width: 1.5rem;
       height: 1.5rem;
-      color: #ff00ff;
-      filter: drop-shadow(0 0 8px #ff00ff);
-      animation: float 1.5s ease-in-out infinite;
+      color: #00ffff;
+      filter: drop-shadow(0 0 8px #00ffff);
     }
 
     .scroll-up-text {
-      color: #ff00ff;
-      font-size: 0.875rem;
-      margin-top: 0.25rem;
+      color: #00ffff;
+      font-size: 0.75rem;
+      margin-left: 0.5rem;
       text-transform: uppercase;
       letter-spacing: 0.2em;
       font-family: 'Audiowide', sans-serif;
-      text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+      text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
     }
 
     /* Content container */
